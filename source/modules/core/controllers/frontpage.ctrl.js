@@ -59,6 +59,17 @@
                 //Setup interval for backups
                 $interval(backupContent, 500);
 
+                $scope.revertToChange = function(change) {
+                    var index = $scope.changeCollection.findIndex(function(element) {
+                        return element.user == change.user && element.timestamp == change.timestamp;
+                    });
+
+                    $scope.content.text = change.content;
+
+                    //Remove all changes after reverted one
+                    $scope.changeCollection.splice(index + 1, $scope.changeCollection.length - index);
+                    $scope.saveToLocalStorage();
+                }
             }
         ])
 })();
