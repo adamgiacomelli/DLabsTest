@@ -12,6 +12,10 @@
                         controller: 'FrontpageCtrl'
                     })
 
+                $locationProvider.html5Mode({
+                    enabled: true,
+                    requireBase: false
+                });
 
                 localStorageServiceProvider
                     .setPrefix('dlabs');

@@ -1,1 +1,33 @@
-<h1>DLabs Test App</h1>
+<md-content>
+    <div flex layout="column" class="frontpage" layout-align="center center">
+        <form name="userForm">
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>User</label>
+                <input ng-model="user.name">
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <label>Content</label>
+                <textarea ng-model="content.text" rows="5" md-select-on-focus></textarea>
+            </md-input-container>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Timestamp</th>
+                    <th>Content</th>
+                    <th>Revert to</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="change in changeCollection">
+                    <td> {{ change.user}} </td>
+                    <td>{{change.timestamp | date:'dd.MM.yyyy @ HH:mm:ss.sss' }}</td>
+                    <td>{{ change.content.text}}</td>
+                    <td><button ng-click="revertToChange(change)"></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</md-content>

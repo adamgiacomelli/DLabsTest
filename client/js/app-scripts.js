@@ -31,6 +31,10 @@
                         controller: 'FrontpageCtrl'
                     })
 
+                $locationProvider.html5Mode({
+                    enabled: true,
+                    requireBase: false
+                });
 
                 localStorageServiceProvider
                     .setPrefix('dlabs');
@@ -44,6 +48,17 @@
         .controller('FrontpageCtrl', ['$scope', 'localStorageService',
             function($scope, localStorageService) {
                 console.log("FrontpageCtrl");
+
+
+                $scope.user = {
+                    name: "Anonymous"
+                }
+
+                $scope.content = {
+                    text: ""
+                }
+
+                $scope.changeCollection = [];
             }
         ])
 })();
