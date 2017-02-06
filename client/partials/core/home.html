@@ -21,11 +21,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="change in changeCollection">
+                <tr ng-repeat="change in changeCollection ">
                     <td> {{ change.user}} </td>
-                    <td>{{change.timestamp | date:'dd.MM.yyyy @ HH:mm:ss.sss' }}</td>
-                    <td>{{ change.content.text}}</td>
-                    <td><button ng-click="revertToChange(change)"></button></td>
+                    <td>{{ change.timestamp | date:'dd.MM.yyyy @ HH:mm:ss.sss' }}</td>
+                    <td>{{ change.content }}</td>
+                    <td><button ng-click="revertToChange(change) ">Revert</button></td>
                 </tr>
             </tbody>
         </table>

@@ -11,8 +11,6 @@
         ])
         .run(
             ['$rootScope',
-                function($rootScope) {
-                    console.log("CORE");
-                }
+                function($rootScope) {}
             ]);
 })();
