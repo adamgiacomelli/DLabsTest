@@ -12,12 +12,17 @@ html * {
       list-style-type: none;
       width: 100%; }
 
+.markdown-window {
+  border: 1px solid;
+  width: 100%; }
+
 textarea {
   border: 1px solid;
-  width: 100%;
+  width: 90%;
   padding: 10px; }
 
 table {
+  width: 90%;
   border-collapse: collapse; }
   table tr td {
     border: 1px solid black;

@@ -1,12 +1,13 @@
 <md-content flex layout="row">
     <div flex="20" layout="column" class="sidebar-user" layout-align="center center">
         <div flex layout="column" layout-align="center center">
+            <h4>User info</h4>
             <md-input-container class="md-block" flex-gt-sm>
                 <label>User</label>
                 <input ng-model="user.name">
             </md-input-container>
             <p>Connected: {{ connection.state }}</p>
-            <h4>Users</h4>
+            <h4>Users:</h4>
             <ul class="user-list">
                 <li ng-repeat="user in users" class="user" ng-if="user.ttl > 0">
                     {{ user.client.name }}
@@ -15,10 +16,11 @@
         </div>
     </div>
     <div flex="80" layout="column" class="frontpage" layout-align="center center">
-        <label>Content</label>
+        <h2>Content</h2>
         <textarea flex="grow" ng-disabled="!connection.state" ng-model="content.text" rows="10" md-select-on-focus></textarea>
-        <label>Markdown to html</label>
-        <p markdown-to-html="content.text"></p>
+        <h2>Markdown to html</h2>
+        <p class="markdown-window" markdown-to-html="content.text"></p>
+        <h2>History</h2>
         <table>
             <thead>
                 <tr>
