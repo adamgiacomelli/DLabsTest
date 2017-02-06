@@ -39,7 +39,6 @@
 
                     //Ignore own messages
                     if (parsedMsg.uid != client.id) {
-                        console.log("websocket message arrived:", parsedMsg.type);
                         switch (parsedMsg.type) {
                             case MessageTypes.ConnectedClient:
                                 dataStream.send(JSON.stringify(constructMessage(getCollectionCB(), MessageTypes.MergeOnNewConnect)));
