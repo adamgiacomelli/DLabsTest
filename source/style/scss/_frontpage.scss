@@ -3,3 +3,36 @@ html * {
 }
 
 .frontpage {}
+
+.sidebar-user {
+    border: 1px solid black;
+
+    ul.user-list {
+        width: 100%;
+        padding: 0;
+
+        li {
+            border: 1px solid black;
+            padding: 10px;
+            list-style-type: none;
+            width: 100%;
+        }
+    }
+}
+
+textarea {
+    border: 1px solid;
+    width: 100%;
+    padding: 10px;
+}
+
+table {
+    border-collapse: collapse;
+
+    tr {
+        td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    }
+}

@@ -4,10 +4,8 @@
         .controller('FrontpageCtrl', ['$scope', '$interval', 'localStorageService', 'dWebsocket', 'uuid',
             function($scope, $interval, localStorageService, dWebsocket, uuid) {
 
-                dWebsocket.initialize('ws://10.9.0.25:1234');
-                $scope.connection = dWebsocket.connection;
-
                 var userId = uuid.v4();
+
 
                 $scope.saveToLocalStorage = function() {
                     var storageBox = {
@@ -36,8 +34,6 @@
                         $scope.changeCollection.push(change);
                     }
                     $scope.saveToLocalStorage();
-
-                    console.log("socket collection", dWebsocket.collection);
                 }
 
                 //Update to local storage contents
@@ -63,8 +59,66 @@
                     $scope.saveToLocalStorage();
                 }
 
+                /*Simple merge algorihtm*/
+                function mergeStrings(sA, sB) {
+                    var linesLast = sA.split('\n');
+                    var linesCurrent = sB.split('\n');
+                    var merged = [];
+                    var j = 0,
+                        i = 0;
+                    while (linesLast[i] != undefined || linesCurrent[j] != undefined) {
+                        if (linesLast[i] == undefined) {
+                            merged.push(linesCurrent[j]);
+                            j++;
+                        }
+                        if (linesCurrent[j] == undefined) {
+                            merged.push(linesLast[i]);
+                            i++;
+                        }
+
+                        if (linesLast[i] == linesCurrent[j]) {
+                            merged.push(linesLast[i]);
+                            j++;
+                            i++;
+                        } else {
+                            merged.push(linesLast[i]);
+                            merged.push(linesCurrent[j]);
+                            j++;
+                            i++;
+                        }
+                    }
+
+                    return merged.join('\n');
+                }
+
+                var updateCollectionCB = function(collection, merge) {
+                    $scope.changeCollection = collection;
+                    var lastChangeText = $scope.changeCollection.slice(-1)[0].content;
+                    if ($scope.content.text != lastChangeText) {
+
+                        if (merge) {
+                            $scope.content.text = mergeStrings(lastChangeText, $scope.content.text);
+                        } else {
+                            $scope.content.text = lastChangeText;
+                        }
+                    }
+                }
+
+                var getCollectionCB = function() {
+                    return $scope.changeCollection;
+                }
+
+
+                $scope.users = [];
+
+                dWebsocket.initialize('ws://10.9.0.25:1234', $scope.user, updateCollectionCB, getCollectionCB, $scope.users);
+                $scope.connection = dWebsocket.connection;
+
                 //Setup interval for backups
-                $interval(backupContent, 500);
+                $interval(function() {
+                    backupContent();
+                    dWebsocket.heartbeat();
+                }, 2000);
 
                 $scope.revertToChange = function(change) {
                     var index = $scope.changeCollection.findIndex(function(element) {
@@ -75,6 +129,7 @@
 
                     //Remove all changes after reverted one
                     $scope.changeCollection.splice(index + 1, $scope.changeCollection.length - index);
+                    dWebsocket.updateCollection($scope.changeCollection);
                     $scope.saveToLocalStorage();
                 }
 

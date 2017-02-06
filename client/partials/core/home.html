@@ -1,17 +1,25 @@
-<md-content>
-    <div flex layout="column" class="frontpage" layout-align="center center">
-        <form name="userForm">
+<md-content flex layout="row">
+    <div flex="20" layout="column" class="sidebar-user" layout-align="center center">
+        <div flex layout="column" layout-align="center center">
             <md-input-container class="md-block" flex-gt-sm>
                 <label>User</label>
                 <input ng-model="user.name">
             </md-input-container>
             <p>Connected: {{ connection.state }}</p>
+            <h4>Users</h4>
+            <ul class="user-list">
+                <li ng-repeat="user in users" class="user" ng-if="user.ttl > 0">
+                    {{ user.client.name }}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div flex="40" layout="column" class="frontpage" layout-align="center center">
+        <label>Content</label>
+        <textarea flex="grow" ng-disabled="!connection.state" ng-model="content.text" rows="10" md-select-on-focus></textarea>
+    </div>
 
-            <md-input-container class="md-block">
-                <label>Content</label>
-                <textarea ng-disabled="!connection.state" ng-model="content.text" rows="5" md-select-on-focus></textarea>
-            </md-input-container>
-        </form>
+    <div flex="40" layout="column" class="frontpage" layout-align="center center">
         <table>
             <thead>
                 <tr>
