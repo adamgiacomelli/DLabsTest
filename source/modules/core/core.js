@@ -7,7 +7,8 @@
             'ngMdIcons',
             'LocalStorageModule',
             'datetime',
-            'textAngular'
+            'angular-uuid',
+            'ngWebSocket'
         ])
         .run(
             ['$rootScope',

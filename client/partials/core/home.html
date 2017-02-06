@@ -5,10 +5,11 @@
                 <label>User</label>
                 <input ng-model="user.name">
             </md-input-container>
+            <p>Connected: {{ connection.state }}</p>
 
             <md-input-container class="md-block">
                 <label>Content</label>
-                <textarea ng-model="content.text" rows="5" md-select-on-focus></textarea>
+                <textarea ng-disabled="!connection.state" ng-model="content.text" rows="5" md-select-on-focus></textarea>
             </md-input-container>
         </form>
         <table>

@@ -25,7 +25,8 @@
     "angular-datetime": "^3.2.2",
     "angular-local-storage": "^0.5.2",
     "textAngular": "^1.5.16",
-    "angular-websocket": "^2.0.0"
+    "angular-websocket": "^2.0.0",
+    "angular-uuids": "^0.0.4"
   },
   "devDependencies": {}
 }

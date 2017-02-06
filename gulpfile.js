@@ -73,9 +73,8 @@ var scripts_angular = [
     'bower_components/angular-material-icons/angular-material-icons.min.js',
     'bower_components/angular-datetime/dist/datetime.js',
     'bower_components/angular-local-storage/dist/angular-local-storage.js',
-    'bower_components/textAngular/dist/textAngular-rangy.min.js',
-    'bower_components/textAngular/dist/textAngular-sanitize.min.js',
-    'bower_components/textAngular/dist/textAngular.min.js'
+    'bower_components/angular-websocket/dist/angular-websocket.min.js',
+    'bower_components/angular-uuids/angular-uuid.js'
 ];
 
 gulp.task('angular', function() {
