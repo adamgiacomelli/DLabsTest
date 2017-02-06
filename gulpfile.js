@@ -74,6 +74,8 @@ var scripts_angular = [
     'bower_components/angular-datetime/dist/datetime.js',
     'bower_components/angular-local-storage/dist/angular-local-storage.js',
     'bower_components/angular-websocket/dist/angular-websocket.min.js',
+    'bower_components/showdown/dist/showdown.min.js',
+    'bower_components/ng-showdown/dist/ng-showdown.min.js',
     'bower_components/angular-uuids/angular-uuid.js'
 ];
 

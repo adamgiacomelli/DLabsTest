@@ -14,12 +14,11 @@
             </ul>
         </div>
     </div>
-    <div flex="40" layout="column" class="frontpage" layout-align="center center">
+    <div flex="80" layout="column" class="frontpage" layout-align="center center">
         <label>Content</label>
         <textarea flex="grow" ng-disabled="!connection.state" ng-model="content.text" rows="10" md-select-on-focus></textarea>
-    </div>
-
-    <div flex="40" layout="column" class="frontpage" layout-align="center center">
+        <label>Markdown to html</label>
+        <p markdown-to-html="content.text"></p>
         <table>
             <thead>
                 <tr>

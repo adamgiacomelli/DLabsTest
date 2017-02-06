@@ -8,7 +8,8 @@
             'LocalStorageModule',
             'datetime',
             'angular-uuid',
-            'ngWebSocket'
+            'ngWebSocket',
+            'ng-showdown'
         ])
         .run(
             ['$rootScope',
