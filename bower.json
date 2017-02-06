@@ -1,0 +1,31 @@
+{
+  "name": "DLabsTest",
+  "description": "DLabsTest",
+  "main": "server/server.js",
+  "authors": [
+    "Adam Giacomelli <adam.giacom@gmail.com>"
+  ],
+  "license": "UNLICENSED",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-resource": "^1.5.5",
+    "angular-route": "^1.5.5",
+    "angular-ui-router": "^0.3.0",
+    "angular-material-icons": "^0.7.1",
+    "angular-material": "^1.1.0-rc5",
+    "angular-datetime": "^3.2.2",
+    "angular-local-storage": "^0.5.2",
+    "textAngular": "^1.5.16",
+    "angular-websocket": "^2.0.0"
+  },
+  "devDependencies": {}
+}
